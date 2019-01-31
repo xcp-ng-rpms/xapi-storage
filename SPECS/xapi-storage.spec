@@ -1,7 +1,7 @@
 Summary:       Xapi storage interface
 Name:          xapi-storage
 Version:       2.19.0_sxm2
-Release:       1%{?dist}
+Release:       2%{?dist}
 URL:           https://github.com/xapi-project/xapi-storage
 Source0:       https://code.citrite.net/rest/archive/latest/projects/XSU/repos/%{name}/archive?at=v%{version}&format=tar.gz&prefix=%{name}-%{version}#/%{name}-%{version}.tar.gz
 Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v2.19.0_sxm2&format=tar.gz&prefix=xapi-storage-2.19.0_sxm2#/xapi-storage-2.19.0_sxm2.tar.gz) = 12c3177f571a269088de8be1032e06e625919f5e
