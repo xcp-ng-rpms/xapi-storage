@@ -1,10 +1,14 @@
 Summary:       Xapi storage interface
 Name:          xapi-storage
-Version:       2.19.0_sxm2
+Version:       6.19.0_sxm2
 Release:       1%{?dist}
 URL:           https://github.com/xapi-project/xapi-storage
-Source0:       https://code.citrite.net/rest/archive/latest/projects/XSU/repos/%{name}/archive?at=v%{version}&format=tar.gz&prefix=%{name}-%{version}#/%{name}-%{version}.tar.gz
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v2.19.0_sxm2&format=tar.gz&prefix=xapi-storage-2.19.0_sxm2#/xapi-storage-2.19.0_sxm2.tar.gz) = 12c3177f571a269088de8be1032e06e625919f5e
+
+Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v6.19.0_sxm2&format=tar.gz&prefix=xapi-storage-6.19.0_sxm2#/xapi-storage-6.19.0_sxm2.tar.gz
+
+
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v6.19.0_sxm2&format=tar.gz&prefix=xapi-storage-6.19.0_sxm2#/xapi-storage-6.19.0_sxm2.tar.gz) = 9610ea9d0efe86d6c1405267bb4aec1127267251
+
 License:       LGPL+linking exception
 BuildRequires: python-devel
 BuildRequires: python-setuptools
@@ -17,6 +21,7 @@ BuildRequires: xs-opam-repo
 Xapi storage inteface libraries
 
 %package        ocaml-plugin-runtime
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v6.19.0_sxm2&format=tar.gz&prefix=xapi-storage-6.19.0_sxm2#/xapi-storage-6.19.0_sxm2.tar.gz) = 9610ea9d0efe86d6c1405267bb4aec1127267251
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
 
@@ -25,6 +30,7 @@ The %{name}-ocaml-plugin package contains runtime libraries for OCaml
 plugins for %{name}.
 
 %package        ocaml-plugin-devel
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v6.19.0_sxm2&format=tar.gz&prefix=xapi-storage-6.19.0_sxm2#/xapi-storage-6.19.0_sxm2.tar.gz) = 9610ea9d0efe86d6c1405267bb4aec1127267251
 Summary:        Development files for %{name}
 Requires:       %{name}-ocaml-plugin-runtime = %{version}-%{release}
 Requires:       xs-opam-repo
@@ -34,9 +40,9 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1
 
-%global ocaml_dir    /usr/lib/opamroot/system
+%global ocaml_dir    /usr/lib/opamroot/ocaml-system
 %global ocaml_libdir %{ocaml_dir}/lib
 %global ocaml_docdir %{ocaml_dir}/doc
 
@@ -85,6 +91,19 @@ make install OPAM_PREFIX=%{buildroot}%{ocaml_dir} OPAM_LIBDIR=%{buildroot}%{ocam
 %exclude %{ocaml_libdir}/xapi-storage/*.ml
 
 %changelog
+* Fri Feb 01 2019 Christian Lindig <christian.lindig@citrix.com> - 6.19.0_sxm2-1
+- Replaced jbuild files with dune.
+- Disabled broken tests temporarily until they are updated.
+
+* Fri Nov 16 2018 Christian Lindig <christian.lindig@citrix.com> - 5.19.0_sxm2-1
+- doc,plugin: All plugins need to satisfy interface
+
+* Thu Nov 01 2018 Christian Lindig <christian.lindig@citrix.com> - 4.19.0_sxm2-1
+- Update opam files for Opam 2, move Travis to OCaml 4.06
+
+* Wed Sep 05 2018 Christian Lindig <christian.lindig@citrix.com> - 3.19.0_sxm2-1
+- Simplify PPX processing in jbuild file
+
 * Mon Jul 30 2018 Christian Lindig <christian.lindig@citrix.com> - 2.19.0_sxm2-1
 - Update list_changed_blocks docs
 
