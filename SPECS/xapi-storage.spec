@@ -1,13 +1,13 @@
 Summary:       Xapi storage interface
 Name:          xapi-storage
-Version:       6.19.0_sxm2
-Release:       1%{?dist}
+Version:       8.19.0_sxm2
+Release:       2%{?dist}
 URL:           https://github.com/xapi-project/xapi-storage
 
-Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v6.19.0_sxm2&format=tar.gz&prefix=xapi-storage-6.19.0_sxm2#/xapi-storage-6.19.0_sxm2.tar.gz
+Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v8.19.0_sxm2&format=tar.gz&prefix=xapi-storage-8.19.0_sxm2#/xapi-storage-8.19.0_sxm2.tar.gz
 
 
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v6.19.0_sxm2&format=tar.gz&prefix=xapi-storage-6.19.0_sxm2#/xapi-storage-6.19.0_sxm2.tar.gz) = 9610ea9d0efe86d6c1405267bb4aec1127267251
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v8.19.0_sxm2&format=tar.gz&prefix=xapi-storage-8.19.0_sxm2#/xapi-storage-8.19.0_sxm2.tar.gz) = c1e0780edf84b06f0778fdb49c69ac6b909612f4
 
 License:       LGPL+linking exception
 BuildRequires: python-devel
@@ -21,7 +21,7 @@ BuildRequires: xs-opam-repo
 Xapi storage inteface libraries
 
 %package        ocaml-plugin-runtime
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v6.19.0_sxm2&format=tar.gz&prefix=xapi-storage-6.19.0_sxm2#/xapi-storage-6.19.0_sxm2.tar.gz) = 9610ea9d0efe86d6c1405267bb4aec1127267251
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v8.19.0_sxm2&format=tar.gz&prefix=xapi-storage-8.19.0_sxm2#/xapi-storage-8.19.0_sxm2.tar.gz) = c1e0780edf84b06f0778fdb49c69ac6b909612f4
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
 
@@ -30,7 +30,7 @@ The %{name}-ocaml-plugin package contains runtime libraries for OCaml
 plugins for %{name}.
 
 %package        ocaml-plugin-devel
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v6.19.0_sxm2&format=tar.gz&prefix=xapi-storage-6.19.0_sxm2#/xapi-storage-6.19.0_sxm2.tar.gz) = 9610ea9d0efe86d6c1405267bb4aec1127267251
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v8.19.0_sxm2&format=tar.gz&prefix=xapi-storage-8.19.0_sxm2#/xapi-storage-8.19.0_sxm2.tar.gz) = c1e0780edf84b06f0778fdb49c69ac6b909612f4
 Summary:        Development files for %{name}
 Requires:       %{name}-ocaml-plugin-runtime = %{version}-%{release}
 Requires:       xs-opam-repo
@@ -42,12 +42,15 @@ developing applications that use %{name}.
 %prep
 %autosetup -p1
 
-%global ocaml_dir    /usr/lib/opamroot/ocaml-system
+%global ocaml_dir    %{_opamroot}/ocaml-system
 %global ocaml_libdir %{ocaml_dir}/lib
 %global ocaml_docdir %{ocaml_dir}/doc
 
 %build
 make
+
+%check
+make test
 
 %install
 mkdir -p %{buildroot}%{ocaml_libdir}
@@ -91,6 +94,16 @@ make install OPAM_PREFIX=%{buildroot}%{ocaml_dir} OPAM_LIBDIR=%{buildroot}%{ocam
 %exclude %{ocaml_libdir}/xapi-storage/*.ml
 
 %changelog
+* Fri Aug 23 2019 Edwin Török <edvin.torok@citrix.com> - 8.19.0_sxm2-2
+- bump packages after xs-opam update
+
+* Fri Aug 02 2019 Christian Lindig <christian.lindig@citrix.com> - 8.19.0_sxm2-1
+- Fix unit tests
+- Update opam file from xs-opam
+
+* Wed Mar 20 2019 Christian Lindig <christian.lindig@citrix.com> - 7.19.0_sxm2-1
+- CA-306713: expose log.critical method
+
 * Fri Feb 01 2019 Christian Lindig <christian.lindig@citrix.com> - 6.19.0_sxm2-1
 - Replaced jbuild files with dune.
 - Disabled broken tests temporarily until they are updated.
