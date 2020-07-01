@@ -1,13 +1,13 @@
 Summary:       Xapi storage interface
 Name:          xapi-storage
-Version:       8.19.0_sxm2
-Release:       2%{?dist}
+Version:       11.19.0_sxm2
+Release:       1%{?dist}
 URL:           https://github.com/xapi-project/xapi-storage
 
-Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v8.19.0_sxm2&format=tar.gz&prefix=xapi-storage-8.19.0_sxm2#/xapi-storage-8.19.0_sxm2.tar.gz
+Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v11.19.0_sxm2&format=tar.gz&prefix=xapi-storage-11.19.0_sxm2#/xapi-storage-11.19.0_sxm2.tar.gz
 
 
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v8.19.0_sxm2&format=tar.gz&prefix=xapi-storage-8.19.0_sxm2#/xapi-storage-8.19.0_sxm2.tar.gz) = c1e0780edf84b06f0778fdb49c69ac6b909612f4
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v11.19.0_sxm2&format=tar.gz&prefix=xapi-storage-11.19.0_sxm2#/xapi-storage-11.19.0_sxm2.tar.gz) = 6b76e797823003bc72cf0a3ca23dbfd04964de85
 
 License:       LGPL+linking exception
 BuildRequires: python-devel
@@ -21,7 +21,7 @@ BuildRequires: xs-opam-repo
 Xapi storage inteface libraries
 
 %package        ocaml-plugin-runtime
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v8.19.0_sxm2&format=tar.gz&prefix=xapi-storage-8.19.0_sxm2#/xapi-storage-8.19.0_sxm2.tar.gz) = c1e0780edf84b06f0778fdb49c69ac6b909612f4
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v11.19.0_sxm2&format=tar.gz&prefix=xapi-storage-11.19.0_sxm2#/xapi-storage-11.19.0_sxm2.tar.gz) = 6b76e797823003bc72cf0a3ca23dbfd04964de85
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
 
@@ -30,7 +30,7 @@ The %{name}-ocaml-plugin package contains runtime libraries for OCaml
 plugins for %{name}.
 
 %package        ocaml-plugin-devel
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v8.19.0_sxm2&format=tar.gz&prefix=xapi-storage-8.19.0_sxm2#/xapi-storage-8.19.0_sxm2.tar.gz) = c1e0780edf84b06f0778fdb49c69ac6b909612f4
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v11.19.0_sxm2&format=tar.gz&prefix=xapi-storage-11.19.0_sxm2#/xapi-storage-11.19.0_sxm2.tar.gz) = 6b76e797823003bc72cf0a3ca23dbfd04964de85
 Summary:        Development files for %{name}
 Requires:       %{name}-ocaml-plugin-runtime = %{version}-%{release}
 Requires:       xs-opam-repo
@@ -94,6 +94,16 @@ make install OPAM_PREFIX=%{buildroot}%{ocaml_dir} OPAM_LIBDIR=%{buildroot}%{ocam
 %exclude %{ocaml_libdir}/xapi-storage/*.ml
 
 %changelog
+* Tue Feb 04 2020 Christian Lindig <christian.lindig@citrix.com> - 11.19.0_sxm2-1
+- Correct method signature in example
+
+* Wed Dec 11 2019 Christian Lindig <christian.lindig@citrix.com> - 10.19.0_sxm2-1
+- CP-32659: define Volume.copy api
+- maintenance: fix doc generation
+
+* Fri Nov 29 2019 Christian Lindig <christian.lindig@citrix.com> - 9.19.0_sxm2-1
+- Replace python example code with minimal functional implementation.
+
 * Fri Aug 23 2019 Edwin Török <edvin.torok@citrix.com> - 8.19.0_sxm2-2
 - bump packages after xs-opam update
 
