@@ -1,7 +1,7 @@
 Summary:       Xapi storage interface
 Name:          xapi-storage
 Version:       11.19.0_sxm2
-Release:       1%{?dist}
+Release:       3%{?dist}
 URL:           https://github.com/xapi-project/xapi-storage
 
 Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v11.19.0_sxm2&format=tar.gz&prefix=xapi-storage-11.19.0_sxm2#/xapi-storage-11.19.0_sxm2.tar.gz
@@ -16,6 +16,7 @@ BuildRequires: xs-opam-repo
 
 %global _use_internal_dependency_generator 0
 %global __requires_exclude *caml*
+%global __python %{__python2}
 
 %description
 Xapi storage inteface libraries
@@ -94,6 +95,12 @@ make install OPAM_PREFIX=%{buildroot}%{ocaml_dir} OPAM_LIBDIR=%{buildroot}%{ocam
 %exclude %{ocaml_libdir}/xapi-storage/*.ml
 
 %changelog
+* Mon Sep 27 2021 Pau Ruiz Safont <pau.safont@citrix.com> - 11.19.0_sxm2-3
+- Bump package after xs-opam update
+
+* Tue Jul 13 2021 Edwin Török <edvin.torok@citrix.com> - 11.19.0_sxm2-2
+- bump packages after xs-opam update
+
 * Tue Feb 04 2020 Christian Lindig <christian.lindig@citrix.com> - 11.19.0_sxm2-1
 - Correct method signature in example
 
