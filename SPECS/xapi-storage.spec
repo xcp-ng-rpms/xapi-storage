@@ -1,28 +1,22 @@
+%global package_speccommit 73dd2482dc9ea8d39d8dbb36a444a17320eb51a5
+%global package_srccommit v11.19.0_sxm2
 Summary:       Xapi storage interface
 Name:          xapi-storage
-Version:       11.19.0_sxm2
-Release:       3%{?dist}
+Version: 11.19.0_sxm2
+Release: 9%{?xsrel}%{?dist}
 URL:           https://github.com/xapi-project/xapi-storage
-
-Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v11.19.0_sxm2&format=tar.gz&prefix=xapi-storage-11.19.0_sxm2#/xapi-storage-11.19.0_sxm2.tar.gz
-
-
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v11.19.0_sxm2&format=tar.gz&prefix=xapi-storage-11.19.0_sxm2#/xapi-storage-11.19.0_sxm2.tar.gz) = 6b76e797823003bc72cf0a3ca23dbfd04964de85
-
-License:       LGPL+linking exception
+Source0: xapi-storage-11.19.0_sxm2.tar.gz
+License:       LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 BuildRequires: python-devel
 BuildRequires: python-setuptools
 BuildRequires: xs-opam-repo
 
-%global _use_internal_dependency_generator 0
-%global __requires_exclude *caml*
 %global __python %{__python2}
 
 %description
 Xapi storage inteface libraries
 
 %package        ocaml-plugin-runtime
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v11.19.0_sxm2&format=tar.gz&prefix=xapi-storage-11.19.0_sxm2#/xapi-storage-11.19.0_sxm2.tar.gz) = 6b76e797823003bc72cf0a3ca23dbfd04964de85
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
 
@@ -31,7 +25,6 @@ The %{name}-ocaml-plugin package contains runtime libraries for OCaml
 plugins for %{name}.
 
 %package        ocaml-plugin-devel
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xapi-storage/archive?at=v11.19.0_sxm2&format=tar.gz&prefix=xapi-storage-11.19.0_sxm2#/xapi-storage-11.19.0_sxm2.tar.gz) = 6b76e797823003bc72cf0a3ca23dbfd04964de85
 Summary:        Development files for %{name}
 Requires:       %{name}-ocaml-plugin-runtime = %{version}-%{release}
 Requires:       xs-opam-repo
@@ -95,6 +88,25 @@ make install OPAM_PREFIX=%{buildroot}%{ocaml_dir} OPAM_LIBDIR=%{buildroot}%{ocam
 %exclude %{ocaml_libdir}/xapi-storage/*.ml
 
 %changelog
+* Thu Jul 20 2023 Rob Hoes <rob.hoes@citrix.com> - 11.19.0_sxm2-9
+- Bump release and rebuild
+
+* Mon Jun 19 2023 Christian Lindig <christian.lindig@citrix.com> - 11.19.0_sxm2-8
+- Bump release and rebuild
+
+* Thu Jun 08 2023 Christian Lindig <christian.lindig@citrix.com> - 11.19.0_sxm2-7
+- Bump release and rebuild
+
+* Fri May 12 2023 Christian Lindig <christian.lindig@citrix.com> - 11.19.0_sxm2-6
+- Bump release and rebuild
+
+* Fri May 12 2023 Christian Lindig <christian.lindig@citrix.com> - 11.19.0_sxm2-5
+- Bump release and rebuild
+
+* Thu Feb 23 2023 Pau Ruiz Safont <pau.ruizsafont@cloud.com> - 11.19.0_sxm2-4
+- Change license to match xapi in 8.3
+- Remove macro for dependency generator
+
 * Mon Sep 27 2021 Pau Ruiz Safont <pau.safont@citrix.com> - 11.19.0_sxm2-3
 - Bump package after xs-opam update
 
@@ -147,7 +159,7 @@ make install OPAM_PREFIX=%{buildroot}%{ocaml_dir} OPAM_LIBDIR=%{buildroot}%{ocam
 - CA-289145: Close socket if error occurs when connecting
 
 * Mon Apr 09 2018 Christian Lindig <christian.lindig@citrix.com> - 0.16.0-1
-- CA-283254: formatting strings with % and .format differ in their handling of 
+- CA-283254: formatting strings with % and .format differ in their handling of
   unicode, with format being better.
 
 * Wed Apr 04 2018 Marcello Seri <marcello.seri@citrix.com> - 0.15.0-2
@@ -170,7 +182,7 @@ make install OPAM_PREFIX=%{buildroot}%{ocaml_dir} OPAM_LIBDIR=%{buildroot}%{ocam
 
 * Wed Feb 28 2018 Christian Lindig <christian.lindig@citrix.com> - 0.13.0-1
 - CA-283728: put generated code into new namespace
-- CA-283728: ship old version of SMAPIv3 generated code for 
+- CA-283728: ship old version of SMAPIv3 generated code for
 - Move lost __init__.py patch from spec file to repository
   compatibility with old tmpfsSR
 - Fix some flake8 warnings in the generated code
