@@ -1,9 +1,9 @@
-%global package_speccommit ad55ad5e79c54d58a42ac731982d14d6e9be53b0
+%global package_speccommit b16331f47d1f7830dbd6512d9462a9d7d4d18d94
 %global package_srccommit v11.19.0_sxm2
 Summary:       Xapi storage interface
 Name:          xapi-storage
 Version: 11.19.0_sxm2
-Release: 10%{?xsrel}%{?dist}
+Release: 17%{?xsrel}%{?dist}
 URL:           https://github.com/xapi-project/xapi-storage
 Source0: xapi-storage-11.19.0_sxm2.tar.gz
 License:       LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
@@ -88,6 +88,27 @@ make install OPAM_PREFIX=%{buildroot}%{ocaml_dir} OPAM_LIBDIR=%{buildroot}%{ocam
 %exclude %{ocaml_libdir}/xapi-storage/*.ml
 
 %changelog
+* Fri Mar 08 2024 Christian Lindig <christian.lindig@cloud.com> - 11.19.0_sxm2-17
+- Bump release and rebuild
+
+* Wed Mar 06 2024 Christian Lindig <christian.lindig@cloud.com> - 11.19.0_sxm2-16
+- Bump release and rebuild
+
+* Tue Mar 05 2024 Christian Lindig <christian.lindig@cloud.com> - 11.19.0_sxm2-15
+- Bump release and rebuild
+
+* Fri Nov 03 2023 Christian Lindig <christian.lindig@cloud.com> - 11.19.0_sxm2-14
+- Bump release and rebuild
+
+* Tue Oct 24 2023 Christian Lindig <christian.lindig@cloud.com> - 11.19.0_sxm2-13
+- Bump release and rebuild
+
+* Tue Oct 24 2023 Christian Lindig <christian.lindig@cloud.com> - 11.19.0_sxm2-12
+- Bump release and rebuild
+
+* Wed Oct 18 2023 Christian Lindig <christian.lindig@cloud.com> - 11.19.0_sxm2-11
+- Bump release and rebuild
+
 * Mon Oct 02 2023 Pau Ruiz Safont <pau.ruizsafont@cloud.com> - 11.19.0_sxm2-10
 - Bump release and rebuild
 
