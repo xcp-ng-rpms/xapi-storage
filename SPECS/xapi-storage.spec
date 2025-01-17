@@ -1,9 +1,9 @@
-%global package_speccommit 1f10934dfcb9c41ae2f158f4f9b16577dc347c40
+%global package_speccommit 00e1c9edadf7ead88b48d7e8a78022be56a71ff8
 %global package_srccommit v11.19.0_sxm2
 Summary:       Xapi storage interface
 Name:          xapi-storage
 Version: 11.19.0_sxm2
-Release: 19%{?xsrel}%{?dist}
+Release: 22%{?xsrel}%{?dist}
 URL:           https://github.com/xapi-project/xapi-storage
 Source0: xapi-storage-11.19.0_sxm2.tar.gz
 License:       LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
@@ -88,6 +88,15 @@ make install OPAM_PREFIX=%{buildroot}%{ocaml_dir} OPAM_LIBDIR=%{buildroot}%{ocam
 %exclude %{ocaml_libdir}/xapi-storage/*.ml
 
 %changelog
+* Fri Dec 13 2024 Christian Lindig <christian.lindig@cloud.com> - 11.19.0_sxm2-22
+- Bump release and rebuild
+
+* Thu Dec 12 2024 Christian Lindig <christian.lindig@cloud.com> - 11.19.0_sxm2-21
+- Bump release and rebuild
+
+* Mon Dec 09 2024 Christian Lindig <christian.lindig@cloud.com> - 11.19.0_sxm2-20
+- Bump release and rebuild
+
 * Thu Aug 29 2024 Christian Lindig <christian.lindig@cloud.com> - 11.19.0_sxm2-19
 - Bump release and rebuild
 
